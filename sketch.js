@@ -22,6 +22,18 @@ function setup() {
 
 	for(let i = 0; i <2000; i++)p[i] = new Particle();
 
+//Texts:
+  let t = createP('Yeahhhh!');
+  t.position(50, 0);
+  t.style('font-family','Courier Prime');
+  t.style('font-size','40px');
+  t.style('color','LawnGreen');
+  let y = createP('// Click anywhere to listen');
+  y.position(50, 60);
+  y.style('font-family','Courier Prime');
+  y.style('font-size','20px');
+  y.style('font-style','italic');
+  y.style('color','LawnGreen');
 }
 
 function draw() {
@@ -30,24 +42,24 @@ function draw() {
 		i.show();
 	}
 
-  //yeah
-  push();
-  fill("LawnGreen");
-  let myText = "Yeahhhh!";
-  textSize(40);
-  textFont("Courier Prime");
-  text(myText,50,60);
-  pop();
-
-  //click for sound
-  push();
-  fill("LawnGreen");
-  let myText2 = "// Click anywhere to listen";
-  textSize(20);
-  textStyle(ITALIC);
-  textFont("Courier Prime");
-  text(myText2,50,90);
-  pop();
+//Alternative way to put the texts (not as nice tho):
+  //    //yeah
+  // push();
+  // fill("LawnGreen");
+  // let myText = "Yeahhhh!";
+  // textSize(40);
+  // textFont("Courier Prime");
+  // text(myText,50,60);
+  // pop();
+  //    //click for sound
+  // push();
+  // fill("LawnGreen");
+  // let myText2 = "// Click anywhere to listen";
+  // textSize(20);
+  // textStyle(ITALIC);
+  // textFont("Courier Prime");
+  // text(myText2,50,90);
+  // pop();
 }
 
 class Particle {
@@ -85,7 +97,9 @@ class Particle {
 }
 
 function mouseClicked() {
-  mySong.play();
+  if (!mySong.isPlaying()) { //plays only if the song isn't already playing, to avoid overlapping
+    mySong.play();
+  }
 }
 
 function windowResized() {
